@@ -29,7 +29,7 @@ st.markdown(f"""
 h1,h2,h3,p,li {{ color:white !important; }}
 
 .glass {{
-    background: rgba(255,255,255,0.40);
+    background: rgba(255,255,255,0.18);
     padding: 25px;
     border-radius: 18px;
     backdrop-filter: blur(12px);
@@ -40,7 +40,7 @@ h1,h2,h3,p,li {{ color:white !important; }}
 
 .glass:hover {{
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(255,255,255,0.40);
+    box-shadow: 0 0 20px rgba(255,255,255,0.18);
 }}
 </style>
 """, unsafe_allow_html=True)

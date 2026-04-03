@@ -35,7 +35,7 @@ h1, h2, h3, p, li {{
 }}
 
 .glass {{
-    background: rgba(255,255,255,0.40);
+    background: rgba(255,255,255,0.18);
     padding: 35px;
     border-radius: 20px;
     backdrop-filter: blur(12px);
@@ -56,7 +56,7 @@ st.markdown(f"""
 
 
 # .hero {{
-#     background: rgba(255,255,255,0.40);
+#     background: rgba(255,255,255,0.18);
 #     padding: 40px;
 #     border-radius: 20px;
 #     text-align: center;
@@ -69,7 +69,7 @@ st.markdown(f"""
 .hero {{
     width: 80%;
     margin: auto;
-    background: rgba(255,255,255,0.40);
+    background: rgba(255,255,255,0.18);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
@@ -93,7 +93,7 @@ st.markdown(f"""
 .glass:hover {{
     transform: scale(1.02);
     transition: 0.3s;
-    box-shadow: 0 0 20px rgba(255,255,255,0.40);
+    box-shadow: 0 0 20px rgba(255,255,255,0.18);
 }}
 
 </style>
@@ -105,7 +105,7 @@ st.markdown(f"""
 .hero:hover {{
     transform: scale(1.02);
     transition: 0.3s;
-    box-shadow: 0 0 30px rgba(255,255,255,0.40);
+    box-shadow: 0 0 30px rgba(255,255,255,0.18);
 }}
 
 </style>
