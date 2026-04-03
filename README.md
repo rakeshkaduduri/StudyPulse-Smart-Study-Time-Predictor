@@ -177,7 +177,7 @@ User inputs:
 ```
 StudyPulse/
 │
-├── app.py                # Main Streamlit app
+├── Home.py              # Main Streamlit app
 ├── dashboard.py         # Dashboard logic
 ├── model/
 │   └── model.pkl        # Trained ML model
