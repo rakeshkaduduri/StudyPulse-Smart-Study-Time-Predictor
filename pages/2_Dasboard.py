@@ -24,12 +24,12 @@ st.markdown(f"""
     position:fixed;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.45);
 }}
 h1,h2,h3,p,li {{ color:white !important; }}
 
 .glass {{
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.40);
     padding: 25px;
     border-radius: 18px;
     backdrop-filter: blur(12px);
@@ -40,7 +40,7 @@ h1,h2,h3,p,li {{ color:white !important; }}
 
 .glass:hover {{
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(255,255,255,0.25);
+    box-shadow: 0 0 20px rgba(255,255,255,0.40);
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -161,7 +161,7 @@ for i in range(sessions):
                 activity = f"Practice + Revise ({subject})"
 
     else:
-        
+
         # NORMAL MODE
         if difficulty == "High":
             if i == 0:
