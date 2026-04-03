@@ -1,0 +1,18 @@
+StudyPulse/
+│
+├── Home.py                   # Home page
+├── data/
+│   └── data.csv              # Dataset
+│
+├── model/
+│   ├── train_model.py        # Train ML model
+│   └── model.pkl             # Saved model (generated)
+│
+├── pages/
+│   ├── 1_Input.py            # User input
+│   ├── 2_Dashboard.py        # ML + Output
+│
+├── assets/
+│   └── bg.png
+│
+├── requirements.txt    
