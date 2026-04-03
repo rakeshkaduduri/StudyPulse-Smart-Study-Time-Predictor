@@ -14,19 +14,27 @@ def get_base64(file):
 bg = get_base64("assets/bg.png")
 
 st.markdown(f"""
-<style>
+<style> 
 [data-testid="stAppViewContainer"] {{
     background-image: url("data:image/png;base64,{bg}");
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }}
 [data-testid="stAppViewContainer"]::before {{
     content:"";
     position:fixed;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.75);
 }}
 h1,h2,h3,p,li {{ color:white !important; }}
+
+</style>
+ """, unsafe_allow_html=True)
+
+st.markdown(f"""
+<style>
 
 .glass {{
     background: rgba(255,255,255,0.18);
@@ -42,6 +50,62 @@ h1,h2,h3,p,li {{ color:white !important; }}
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(255,255,255,0.18);
 }}
+
+.glass-green {{
+    background: linear-gradient(
+        rgba(0,255,150,0.25),
+        rgba(0,200,100,0.25));
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 25px;
+}}
+
+.glass-yellow {{
+    background: linear-gradient(
+        rgba(255,200,0,0.15),
+        rgba(255,180,0,0.15));
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 25px;
+}}
+
+.glass-purple {{
+    background: linear-gradient(
+        rgba(200,80,255,0.35),
+        rgba(140,80,220,0.35));
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 25px;
+}}
+            
+.glass-cyan {{
+    background: linear-gradient(
+        rgba(0,150,255,0.30),
+        rgba(0,150,255,0.30)
+    );
+    border: 1px solid rgba(255,255,255,0.2);
+}}
+            
+.glass-alert-high {{
+    background: linear-gradient(
+        rgba(120,20,20,0.65),
+        rgba(80,10,10,0.65)
+    );
+    border: 1px solid rgba(255,100,100,0.3);
+}}
+
+.glass-blue:hover,
+.glass-green:hover,
+.glass-yellow:hover,
+.glass-purple:hover,
+.glass-cyan:hover {{
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -207,9 +271,9 @@ schedule_df = pd.DataFrame(schedule_rows)
 # ---------- STYLE SCHEDULE ----------
 def highlight_rows(row):
     if row["Type"] == "Study":
-        return ["background-color: rgba(0,255,100,0.15)"] * len(row)
+        return ["background-color: rgba(0,200,100,0.15)"] * len(row)
     else:
-        return ["background-color: rgba(255,150,0,0.15)"] * len(row)
+        return ["background-color: rgba(255, 180, 0, 0.15)"] * len(row)
 
 styled_df = schedule_df.style.apply(highlight_rows, axis=1)
 
@@ -264,14 +328,20 @@ if not improvements:
 
 
 # ---------- TITLE ----------
-st.markdown("<h1>📊 Study Intelligence Report</h1>", unsafe_allow_html=True)
+st.markdown("<h1>📘 Study Intelligence Report</h1>", unsafe_allow_html=True)
 
 # ---------- PRODUCTIVITY SCORE ----------
-score = (focus * 2 + sleep * 2 + study - stress) * 5
+score = (
+    focus * 0.35 +
+    sleep * 0.30 +
+    (10 - stress) * 0.20 +
+    min(study, 8) * 0.15
+) * 10
+
 score = int(max(0, min(score, 100)))
 
 st.markdown(f"""
-<div class="glass">
+<div class="glass glass-yellow">
 <h3>🎯 Productivity Score</h3>
 <h1 style='color:#00FFAA'>{score}/100</h1>
 <p>Based on your sleep, focus, stress, and study patterns.</p>
@@ -280,7 +350,7 @@ st.markdown(f"""
 
 # ---------- BEST TIME ----------
 st.markdown(f"""
-<div class="glass">
+<div class="glass glass-cyan">
 <h3>🧠 Best Study Time</h3>
 <p>Your most productive study period is <b>{best_time}</b>.</p>
 <p>This is determined using your focus, sleep, and stress levels to maximize learning efficiency.</p>
@@ -301,7 +371,7 @@ else:
     health_insight = "Improving focus will have the biggest impact on your productivity."
 
 st.markdown(f"""
-<div class="glass">
+<div class="glass glass-green">
 <h3>💤 Health & Cognitive Analysis</h3>
 <p>{sleep_msg}</p>
 <p><b>Insight:</b> {health_insight}</p>
@@ -326,7 +396,7 @@ else:
 
 # ---------- BREAK ----------
 st.markdown(f"""
-<div class="glass">
+<div class="glass glass-cyan">
 <h3>⏱ Break Strategy</h3>
 <p>{break_msg}</p>
 <ul>
@@ -340,7 +410,7 @@ st.markdown(f"""
 # ---------- EXAM MODE ----------
 if exam_days <= 3:
     st.markdown("""
-    <div class="glass">
+    <div class="glass glass-alert-high">
     <h3>🔥 Exam Mode Activated</h3>
     <p>You are very close to exams. Focus more on revision, mock tests, and weak areas. Avoid learning new topics.</p>
     </div>
@@ -354,7 +424,7 @@ def highlight_rows(row):
     if row["Type"] == "Study":
         return ["background-color: rgba(0,255,100,0.15)"] * len(row)
     else:
-        return ["background-color: rgba(255,150,0,0.15)"] * len(row)
+        return ["background-color: rgba(255, 180, 0, 0.15)"] * len(row)
 
 styled_df = schedule_df.style.apply(highlight_rows, axis=1)
 if exam_days <= 3:
@@ -364,8 +434,10 @@ elif exam_days <= 7:
 else:
     st.success("🧠 Learning Mode: Build strong concepts")
 st.write(styled_df)
+
+
 st.markdown("""
-<div class="glass">
+<div class="glass glass-purple">
 <h3>🧠 Why This Plan Works</h3>
 
 <p>
@@ -425,7 +497,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # ---------- IMPROVEMENTS ----------
 st.markdown(f"""
-<div class="glass">
+<div class="glass glass-green">
 <h3>📈 Personalized Improvement Suggestions</h3>
 <ul>
 {''.join(f"<li>{i}</li>" for i in improvements)}

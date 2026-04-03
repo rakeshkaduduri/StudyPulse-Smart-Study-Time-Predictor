@@ -23,7 +23,7 @@ st.markdown(f"""
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.75);
 }}
 
 h1, h2, h3, p, li {{

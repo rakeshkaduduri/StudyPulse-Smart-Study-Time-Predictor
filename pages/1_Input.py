@@ -14,13 +14,15 @@ st.markdown(f"""
 [data-testid="stAppViewContainer"] {{
     background-image: url("data:image/png;base64,{bg}");
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }}
 [data-testid="stAppViewContainer"]::before {{
     content:"";
     position:fixed;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0,0,0,0.80);
 }}
 h1,label {{ color:white !important; }}
 .glass {{
