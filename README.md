@@ -2,9 +2,11 @@
 
 ## 🚀 Overview
 
-StudyPulse is an intelligent study planning system that analyzes user behavior and generates personalized study strategies. Unlike static planners, it adapts dynamically based on key factors such as sleep, focus, stress, and exam urgency.
+StudyPulse is an AI-powered adaptive study planner that helps students optimize learning using behavioral data such as sleep, focus, stress, and study patterns. Unlike static schedules, it analyzes these factors to understand performance under different conditions.
 
-The system combines **machine learning predictions with rule-based behavioral logic** to deliver reliable and context-aware recommendations.
+The core of StudyPulse is a hybrid intelligence model that combines machine learning with rule-based logic. The machine learning component predicts the most effective study time (morning, afternoon, or night), while the rule-based system refines these predictions by handling real-world conditions such as low sleep, high stress, or approaching exams. This ensures that the recommendations are both accurate and practical.
+
+The system combines **machine learning predictions with rule-based behavioral logic** to generate personalized study schedules, including structured sessions, break strategies, and actionable insights, helping students improve efficiency and prevent burnout.
 
 ---
 
